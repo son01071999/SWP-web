@@ -1,0 +1,14 @@
+1.Tìm hiểu các quy trình phát triển phát triển dự án,
+Agile(Scrum/Kaban); Waterfall; Spiral;Incremental;...
+
+2.Software Project Management
+(Quy trinh quan ly du an?)
+
+3. Quan ly yeu cau phan mem
+
+4. Liệt kê các tính năng phần mềm (User, functions)
+Phác thảo, tìm hiểu requirements - làm chung
+
+5.Screen flows - làm chung
+
+6. Design DB
