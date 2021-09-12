@@ -64,7 +64,7 @@
   }
   
   .fa-bars {
-    color: #fff;
+    color: #f2906c;
   }
   
   .nav-links-mobile {
@@ -144,7 +144,7 @@
       text-decoration: none;
       font-size: 1.5rem;
       background-color: transparent;
-      color: #fff;
+      color: #f2906c;
       padding: 14px 20px;
       border: 1px solid #fff;
       transition: all 0.3s ease-out;
