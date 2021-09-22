@@ -8,12 +8,12 @@ function Footer() {
     <div className='footer-container'>
       <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
-          Join the Adventure newsletter to receive our best vacation deals
+          Tham gia sự kiện - hoà đồng - vui vẻ - hoạt bát - thân thiện
         </p>
         <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
+          bạn có thể tham gia bất kỳ sự kiện bạn thích
         </p>
-        <div className='input-areas'>
+        {/* <div className='input-areas'>
           <form>
             <input
               className='footer-input'
@@ -23,40 +23,38 @@ function Footer() {
             />
             <Button buttonStyle='btn--outline'>FeedBack</Button>
           </form>
-        </div>
+        </div> */}
       </section>
       <div className='footer-links'>
         <div className='footer-link-wrapper'>
-          <div className='footer-link-items'>
+          {/* <div className='footer-link-items'>
             <h2>About Us</h2>
             <Link to='/sign-up'>How it works</Link>
             <Link to='/'>Testimonials</Link>
             <Link to='/'>Careers</Link>
             <Link to='/'>Investors</Link>
             <Link to='/'>Terms of Service</Link>
-          </div>
+          </div> */}
           <div className='footer-link-items'>
-            <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
-            <Link to='/'>Destinations</Link>
-            <Link to='/'>Sponsorships</Link>
+            <h2>Hỗ trợ</h2>
+            <Link to='/'>0248789632</Link>
+            <Link to='/'>0248632145</Link>
+            <Link to='/'>fptuniver@fpt.edu.vn</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div className='footer-link-items'>
-            <h2>Videos</h2>
-            <Link to='/'>Submit Video</Link>
-            <Link to='/'>Ambassadors</Link>
-            <Link to='/'>Agency</Link>
-            <Link to='/'>Influencer</Link>
+            <h2>Top events</h2>
+            <Link to='/'>events1</Link>
+            <Link to='/'>events2</Link>
+            <Link to='/'>events3</Link>
+            <Link to='/'>events4</Link>
           </div>
           <div className='footer-link-items'>
-            <h2>Social Media</h2>
+            <h2>Mạng xã hội</h2>
             <Link to='/'>Instagram</Link>
             <Link to='/'>Facebook</Link>
             <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
           </div>
         </div>
       </div>
@@ -64,11 +62,11 @@ function Footer() {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-            EFU
+            FU
               <i className='fab fa-typo3' />
             </Link>
           </div>
-          <small className='website-rights'>EFU © 2021</small>
+          <small className='website-rights'>FU © 2021</small>
           <div className='social-icons'>
             <Link
               className='social-icon-link facebook'
