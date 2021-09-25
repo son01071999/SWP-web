@@ -37,7 +37,7 @@ export default function PostContent() {
     };
 
     return (
-        <Card sx={{ maxWidth: 450 }} style={{ margin: "30px auto", padding: "20px" }}>
+        <Card sx={{ maxWidth: 450 }} style={{ margin: "30px 7%", padding: "20px" }}>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
