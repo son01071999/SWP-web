@@ -13,6 +13,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from "react";
 
+
 function Profile() {
     const [values, setValues] = React.useState({
         password: '',
@@ -31,12 +32,16 @@ function Profile() {
         event.preventDefault();
     };
     return (
+        
         <Grid container marginTop="2%">
-            <Grid item sm={5}>
-                <Grid >
+            <Grid item sm={3} ></Grid>
+            <Grid item sm={3}  >
+            
+                <Grid textAlign="right"  >
                     <Avatar
                         alt="Buu Huynh"
-                        sx={{ width: 160, height: 160 }}
+                        sx={{ width: 160, height: 160 , marginLeft:20 }}
+                         
                         src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/185243223_1953754894791542_2328981666400432053_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=s6NeGlf2ANgAX9rLymF&_nc_ht=scontent-xsp1-1.xx&oh=97fadb425aa4d971e42ff7471cb20f16&oe=6170B678"
                     />
                     <Grid>
@@ -74,7 +79,7 @@ function Profile() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item sm={7} >
+            <Grid item sm={3} style={{ paddingTop:50 }} >
                 <Box
                     style={{ display: "flex", flexDirection: "column" }}
                     sx={{
@@ -86,6 +91,7 @@ function Profile() {
                     <TextField id="specialized" label="Specialized" variant="standard" />
                 </Box>
             </Grid>
+            <Grid item sm={3} ></Grid>
         </Grid>
     );
 }
