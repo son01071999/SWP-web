@@ -14,7 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+//test
 
 
 
@@ -30,13 +30,14 @@ const ExpandMore = styled((props) => {
 
 export default function PostContent() {
     const [expanded, setExpanded] = React.useState(false);
+    const a;
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     return (
-        <Card sx={{ maxWidth: 450 }} style={{ margin: "30px auto", padding: "20px" }}>
+        <Card sx={{ maxWidth: 450 }} style={{ margin: "30px 7%", padding: "20px" }}>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
