@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -14,7 +14,19 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SendIcon from '@mui/icons-material/Send';
+import DetailsRoundedIcon from '@mui/icons-material/DetailsRounded';
 
+import {
+    FormControl,
+    InputLabel,
+    Grid,
+    OutlinedInput
+}
+    from '@mui/material';
+import Comment from './Comment';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -35,6 +47,17 @@ export default function PostContent() {
         setExpanded(!expanded);
     };
 
+    axios({
+        method: 'GET',
+        url: 'localhost:8000/event/findAll',
+        data: null,
+
+    }).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    })
+
     return (
         <Card sx={{ maxWidth: 450 }} style={{ margin: "30px 7%", padding: "20px" }}>
             <CardHeader
@@ -44,9 +67,11 @@ export default function PostContent() {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
+                    <NavLink to='/event-detail'>
+                        <IconButton aria-label="settings">
+                            <DetailsRoundedIcon />
+                        </IconButton>
+                    </NavLink>
                 }
                 title="Tiếp nhận tân sinh viên Khoá 17"
                 subheader="September 21, 2021"
@@ -110,6 +135,21 @@ export default function PostContent() {
                     </Typography>
                 </CardContent>
             </Collapse>
+            <Grid >
+                <FormControl fullWidth sx={{ m: 1 }}>
+                    <InputLabel htmlFor="outlined-adornment-amount">Comment</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-amount"
+                        label="Comment"
+                        endAdornment={
+                            <SendIcon />
+                        }
+                    />
+                </FormControl>
+            </Grid>
+            <Grid >
+                <Comment />
+            </Grid>
         </Card>
     );
 }

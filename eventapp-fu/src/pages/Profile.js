@@ -13,7 +13,6 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from "react";
 
-
 function Profile() {
     const [values, setValues] = React.useState({
         password: '',
@@ -32,66 +31,63 @@ function Profile() {
         event.preventDefault();
     };
     return (
-        
+
         <Grid container marginTop="2%">
-            <Grid item sm={3} ></Grid>
-            <Grid item sm={3}  >
-            
-                <Grid textAlign="right"  >
-                    <Avatar
-                        alt="Buu Huynh"
-                        sx={{ width: 160, height: 160 , marginLeft:20 }}
-                         
-                        src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/185243223_1953754894791542_2328981666400432053_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=s6NeGlf2ANgAX9rLymF&_nc_ht=scontent-xsp1-1.xx&oh=97fadb425aa4d971e42ff7471cb20f16&oe=6170B678"
-                    />
+            <Grid item sm={5} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Avatar
+                    alt="Buu Huynh"
+                    sx={{ width: 160, height: 160 }}
+                    src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/185243223_1953754894791542_2328981666400432053_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=s6NeGlf2ANgAX9rLymF&_nc_ht=scontent-xsp1-1.xx&oh=97fadb425aa4d971e42ff7471cb20f16&oe=6170B678"
+                />
+                <Grid>
                     <Grid>
-                        <Grid>
-                            <TextField
-                                label="Email"
-                                id="email"
-                                sx={{ m: 1, width: '25ch' }}
+                        <TextField
+                            label="Email"
+                            id="email"
+                            sx={{ m: 1, width: '25ch' }}
+                        />
+                    </Grid>
+                    <Grid>
+                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={values.showPassword ? 'text' : 'password'}
+                                value={values.password}
+                                onChange={handleChange('password')}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                label="Password"
                             />
-                        </Grid>
-                        <Grid>
-                            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    label="Password"
-                                />
-                            </FormControl>
-                        </Grid>
+                        </FormControl>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item sm={3} style={{ paddingTop:50 }} >
+            <Grid item sm={7}>
                 <Box
                     style={{ display: "flex", flexDirection: "column" }}
                     sx={{
-                        '& > :not(style)': { m: 1, width: '25ch' },
+                        '& > :not(style)': { m: 1, width: '35ch' },
                     }}>
-                    <TextField id="firstName" label="FirstName" variant="standard" />
-                    <TextField id="lastName" label="LastName" variant="standard" />
-                    <TextField id="idStudent" label="Code" variant="standard" />
-                    <TextField id="specialized" label="Specialized" variant="standard" />
+                    <TextField id="firstName" label="FirstName" defaultValue="Huynh" />
+                    <TextField id="lastName" label="LastName" defaultValue="Buu" />
+                    <TextField id="idStudent" label="Code" defaultValue="SE130295" />
+                    <TextField id="specialized" label="Specialized" defaultValue="SE" />
+                    <TextField id="dayofbirth" label="Day of birth" defaultValue="1/1/2011" />
+                    <TextField id="address" label="Address" defaultValue="22 Hoa Hung" />
+                    <TextField id="mail" label="Personal email" defaultValue="asd@gmail.com" />
                 </Box>
             </Grid>
-            <Grid item sm={3} ></Grid>
         </Grid>
     );
 }

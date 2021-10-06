@@ -1,33 +1,16 @@
-import { Button, Dialog, Grid } from "@mui/material";
+import {Grid } from "@mui/material";
 import React from "react";
+import CreateButton from "../components/CreateButton";
 import Footer from "../components/Footer";
-import Post from "../components/Post";
 import PostContent from "../components/PostContent";
 
 function Home() {
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
     return (
         <Grid >
             <Grid container>
                 <Grid item sm={4} >
-                    <Grid style={{ marginLeft: "10%", marginTop: "10%" }}>
-                        <Button variant="outlined" onClick={handleClickOpen}>
-                            Tạo bài viết
-                        </Button>
-                        <Dialog
-                            open={open}
-                            onClose={handleClose}
-                        >
-                            <Post />
-                        </Dialog>
+                    <Grid style={{justifyContent:"center", alignItems:"flex-start", display:"flex", marginTop:"7%"}}>
+                        <CreateButton />
                     </Grid>
                 </Grid>
                 <Grid item sm={8}>

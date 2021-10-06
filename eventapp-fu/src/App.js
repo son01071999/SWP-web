@@ -3,9 +3,10 @@ import Navbar from './components/Navbar';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Services from './pages/Services';
+import ListEvent from './pages/ListEvent';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
+import EventDetail from './pages/EventDetail';
 
 
 
@@ -16,9 +17,10 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/services' component={Services} />
+          <Route path='/myevent' component={ListEvent} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
+          <Route path='/event-detail' component={EventDetail} />
         </Switch>
       </Router>
 

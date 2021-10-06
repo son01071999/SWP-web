@@ -15,6 +15,9 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Form , Formik,Field } from 'formik';
+import * as Yup from 'yup';
+import { ErrorMessage } from 'formik';
 
 
 const theme = createTheme();
@@ -30,6 +33,26 @@ export default function Login() {
             password: data.get('password'),
         });
     };
+    const initialValues={
+        email:'',
+        password:'',
+        remember:false
+    }
+    const validationSchema=Yup.object().shape({
+        email:Yup.string().email('Please enter valid Email').required("Required Email"),
+        password:Yup.string().required("Required password ")
+    })
+    const onSubmit= (values, props)=>{
+        console.log(values)
+    
+        setTimeout(()=>{
+            props.resetForm()
+
+        },2000)
+        
+
+    }
+    
 
     return (
         <ThemeProvider theme={theme}>
@@ -49,8 +72,13 @@ export default function Login() {
                     <Typography component="h1" variant="h5">
                         Login
                     </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <TextField
+                    <Box sx={{ mt: 1 }}>
+                   
+                        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} sx={{ mt: 1 }} >
+                            {(props)=>(
+                                <Form>
+                                    {console.log(props)}
+                                    <Field as={TextField}
                             margin="normal"
                             required
                             fullWidth
@@ -59,8 +87,9 @@ export default function Login() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            helperText={<ErrorMessage name="email"/>}
                         />
-                        <TextField
+                        <Field as={TextField}
                             margin="normal"
                             required
                             fullWidth
@@ -69,8 +98,10 @@ export default function Login() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            helperText={<ErrorMessage name="password"/>}
                         />
-                        <FormControlLabel
+                        <Field as={ FormControlLabel}
+                            name='remember'
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
@@ -79,9 +110,16 @@ export default function Login() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            
                         >
                             Login
                         </Button>
+                                </Form>
+
+                            )}
+
+                        </Formik>
+
                         <Grid container>
                             <Grid item xs style={{textAlign:"center"}}>
                                 <Link href="#" variant="body2">
@@ -89,7 +127,7 @@ export default function Login() {
                                 </Link>
                             </Grid>
                         </Grid>
-                    </Box>
+                        </Box>
                 </Box>
             </Container>
         </ThemeProvider>
