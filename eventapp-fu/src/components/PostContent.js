@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -13,20 +13,19 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SendIcon from '@mui/icons-material/Send';
 import DetailsRoundedIcon from '@mui/icons-material/DetailsRounded';
+import axios, { Axios } from 'axios';
 
 import {
     FormControl,
     InputLabel,
     Grid,
-    OutlinedInput
+    OutlinedInput,
 }
     from '@mui/material';
 import Comment from './Comment';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
 
 
@@ -40,24 +39,26 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
+
+
 export default function PostContent() {
     const [expanded, setExpanded] = React.useState(false);
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    axios({
-        method: 'GET',
-        url: 'localhost:8000/event/findAll',
-        data: null,
+    const [listEvent, setListEvent] = React.useState([])
 
-    }).then(res => {
-        console.log(res);
-    }).catch(err => {
-        console.log(err);
-    })
-
+    useEffect(() => {
+        axios.get("https://ac34-2402-800-6379-36e4-19db-7eb2-b120-fc19.ngrok.io/event/findAll")
+            .then(res => {
+                console.log(res);
+                setListEvent(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
     return (
         <Card sx={{ maxWidth: 450 }} style={{ margin: "30px 7%", padding: "20px" }}>
             <CardHeader
