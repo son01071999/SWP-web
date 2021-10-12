@@ -2,12 +2,12 @@ import { Grid } from '@mui/material';
 import React, { useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 export default function Comment() {
     const [listComment, setListComment] = React.useState([]);
     useEffect(() => {
-        axios.get("https://ac34-2402-800-6379-36e4-19db-7eb2-b120-fc19.ngrok.io/comment/findAll")
+        axios.get("http://localhost:8000/comment/findAll")
             .then(res => {
                 console.log(res);
                 setListComment(res.data);
@@ -27,7 +27,7 @@ export default function Comment() {
                     ))}
                 </Grid>
                 <Grid item sm={2} style={{ textAlign: "end" }}>
-                    <EditIcon sx={{ fontSize: 15 }} />
+                <EditIcon sx={{ fontSize: 15 }} />
                     <DeleteIcon sx={{ fontSize: 15 }} />
                 </Grid>
             </Grid>
