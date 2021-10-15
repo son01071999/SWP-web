@@ -4,27 +4,28 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
+// import CardActions from '@mui/material/CardActions';
+// import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SendIcon from '@mui/icons-material/Send';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import ShareIcon from '@mui/icons-material/Share';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import SendIcon from '@mui/icons-material/Send';
 import DetailsRoundedIcon from '@mui/icons-material/DetailsRounded';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 import {
-    FormControl,
-    InputLabel,
+    // FormControl,
+    // InputLabel,
     Grid,
-    OutlinedInput,
+    // OutlinedInput,
+    Button,
 }
     from '@mui/material';
-import Comment from './Comment';
+// import Comment from './Comment';
 import { NavLink } from 'react-router-dom';
 import { Divider } from '@material-ui/core';
 
@@ -44,9 +45,9 @@ const ExpandMore = styled((props) => {
 
 export default function PostContent() {
     const [expanded, setExpanded] = React.useState(false);
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    // const handleExpandClick = () => {
+    //     setExpanded(!expanded);
+    // };
 
     const [listEvent, setListEvent] = React.useState([])
 
@@ -94,23 +95,23 @@ export default function PostContent() {
                         <Typography variant="body2" color="text.secondary">
                             {allevent.description}
                         </Typography>
-                        <ExpandMore
+                        {/* <ExpandMore
                             expand={expanded}
                             onClick={handleExpandClick}
                             aria-expanded={expanded}
                             aria-label="show more"
                         >
                             <ExpandMoreIcon />
-                        </ExpandMore>
+                        </ExpandMore> */}
                     </CardContent>
-                    <CardActions disableSpacing>
+                    {/* <CardActions disableSpacing>
                         <IconButton aria-label="add to favorites">
                             <FavoriteIcon />
                         </IconButton>
                         <IconButton aria-label="share">
                             <ShareIcon />
                         </IconButton>
-                    </CardActions>
+                    </CardActions> */}
                     {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
                             <Typography paragraph>Method:</Typography>
@@ -140,25 +141,14 @@ export default function PostContent() {
                             </Typography>
                         </CardContent>
                     </Collapse> */}
-                    <Grid >
-                        <form>
-                            <FormControl fullWidth sx={{ m: 1 }}>
-                                <InputLabel htmlFor="outlined-adornment-amount">Comment</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-amount"
-                                    label="Comment"
-                                    endAdornment={
-                                        <SendIcon />
-                                    }
-                                />
-                            </FormControl>
-                        </form>
-                    </Grid>
+                    {/* <Grid>
+                        <Comment />
+                    </Grid> */}
+                    <Button>Comment</Button>
+                <Divider style={{backgroundColor: 'black', margin:"35px 0px"}} />
                 </Grid>
             ))}
-            <Grid >
-                <Comment />
-            </Grid>
         </Card>
+
     );
 }

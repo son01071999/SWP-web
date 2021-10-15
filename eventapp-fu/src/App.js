@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import EventDetail from './pages/EventDetail';
 import EventManagement from './pages/EventManagement';
+import { EventMng } from './pages/EventMng';
 
 
 
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/myevent' component={EventManagement} />
+          <Route path='/myevent' component={EventMng} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
           <Route path='/event-detail' component={EventDetail} />

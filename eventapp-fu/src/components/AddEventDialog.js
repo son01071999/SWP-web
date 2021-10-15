@@ -30,10 +30,11 @@ export class AddEventDialog extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                // alert(result);
+                alert(result);
                 alert('success');
             },
                 (error) => {
+                    console.log(error);
                     alert('Failed');
                 })
     }
@@ -43,7 +44,9 @@ export class AddEventDialog extends Component {
         const btnstyle = { margin: '8px 0' };
         return (
             <Grid style={{ width: "600px" }}>
-                <Paper elevation={10} style={paperStyle}>
+                <Paper elevation={10} style={paperStyle}
+                    {...this.props}
+                >
                     <Grid align='center'>
                         <h2>Add new event</h2>
                     </Grid>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Poster from "../components/Poster";
+import {AddEventDialog} from './AddEventDialog';
 import { Button, Dialog } from "@mui/material";
 
 export default function CreateButton() {
@@ -21,7 +21,7 @@ export default function CreateButton() {
                 open={open}
                 onClose={handleClose}
             >
-                <Poster />
+                <AddEventDialog />
             </Dialog>
         </>
     );

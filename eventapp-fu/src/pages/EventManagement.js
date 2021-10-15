@@ -9,9 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button, Dialog } from '@mui/material';
-import EditEventDialog from '../components/EditEventDialog';
+import {EditEventDialog} from '../components/EditEventDialog';
 import myapi from '../components/api/myapi';
-import {AddEventDialog} from '../components/AddEventDialog';
+import { AddEventDialog } from '../components/AddEventDialog';
 
 
 
@@ -42,15 +42,19 @@ export default function EventManagement() {
     const [editorOpen, setEditorOpen] = React.useState(false);
     const [addEventOpen, setAddEventOpen] = React.useState(false);
 
-   
+
+    const handleClickOpenEdit = () => {
+        setEditorOpen(true);
+    }
 
 
-    const handleClickOpen = () => {
+    const handleClickOpenAdd = () => {
         setAddEventOpen(true);
     }
 
     const handleClickClose = () => {
         setAddEventOpen(false);
+        setEditorOpen(false);
     }
     useEffect(() => {
         axios.get("http://localhost:8000/event/findAll")
@@ -92,15 +96,22 @@ export default function EventManagement() {
                             <StyledTableCell align="center">{myevent.member}</StyledTableCell>
                             <StyledTableCell align="center">{myevent.status}</StyledTableCell>
                             <StyledTableCell align="center">
-                                <Button onClick={handleClickOpen}>
-                                    NewEvent
-                                </Button>
-                                <Dialog open={addEventOpen} onClose={handleClickClose}>
-                                    <AddEventDialog />
-                                </Dialog>
-                                <Button >
-                                    Edit
-                                </Button>
+                                <div>
+                                    <Button onClick={handleClickOpenAdd}>
+                                        NewEvent
+                                    </Button>
+                                    <Dialog open={addEventOpen} onClose={handleClickClose}>
+                                        <AddEventDialog />
+                                    </Dialog>
+                                </div>
+                                <div>
+                                    <Button onClick={handleClickOpenEdit} >
+                                        Edit
+                                    </Button>
+                                    <Dialog open={editorOpen} onClose={handleClickClose}>
+                                        <EditEventDialog />
+                                    </Dialog>
+                                </div>
 
                             </StyledTableCell>
                         </StyledTableRow>
