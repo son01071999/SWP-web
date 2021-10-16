@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Button, Dialog } from '@mui/material';
 import { EditEventDialog } from '../components/EditEventDialog';
 import { AddEventDialog } from '../components/AddEventDialog';
+import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -59,7 +60,7 @@ export class EventMng extends Component {
 
     render() {
 
-        const { events, evtName, evtStart, evtEnd, evtDes, evtStatus, evtLocal, evtMember } = this.state;
+        const { events, evtId, evtName, evtStart, evtEnd, evtDes, evtStatus, evtLocal, evtMember } = this.state;
 
         const handleClickOpenAdd = () => {
             this.setState({ addEventOpen: true })
@@ -69,9 +70,16 @@ export class EventMng extends Component {
             this.setState({ addEventOpen: false })
             this.setState({ editorOpen: false })
         }
-
         return (
             <TableContainer component={Paper} >
+                <div style={{ textAlign: "center", width:"300px", margin:"15px auto" }}>
+                    <Button onClick={handleClickOpenAdd}>
+                        NewEvent
+                    </Button>
+                    <Dialog open={this.state.addEventOpen} onClose={handleClickClose}>
+                        <AddEventDialog />
+                    </Dialog>
+                </div>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table" >
                     <TableHead>
                         <TableRow>
@@ -96,24 +104,20 @@ export class EventMng extends Component {
                                 <StyledTableCell align="center">{myevent.location}</StyledTableCell>
                                 <StyledTableCell align="center">{myevent.description}</StyledTableCell>
                                 <StyledTableCell align="center">{myevent.member}</StyledTableCell>
-                                <StyledTableCell align="center">{myevent.status}</StyledTableCell>
+                                <StyledTableCell align="center" >
+                                    {myevent.status}
+                                </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <div>
-                                        <Button onClick={handleClickOpenAdd}>
-                                            NewEvent
-                                        </Button>
-                                        <Dialog open={this.state.addEventOpen} onClose={handleClickClose}>
-                                            <AddEventDialog />
-                                        </Dialog>
-                                    </div>
+
                                     <div>
                                         <Button onClick={() => this.setState({
                                             editorOpen: true,
+                                            evtId: myevent.eventId,
                                             evtName: myevent.eventName,
-                                            evtDes : myevent.description,
+                                            evtDes: myevent.description,
                                             evtStart: myevent.startDate,
                                             evtEnd: myevent.endDate,
-                                            evtStatus : myevent.status,
+                                            evtStatus: myevent.status,
                                             evtLocal: myevent.location,
                                             evtMember: myevent.member,
                                         })} >
@@ -121,13 +125,14 @@ export class EventMng extends Component {
                                         </Button>
                                         <Dialog open={this.state.editorOpen} onClose={handleClickClose}>
                                             <EditEventDialog
-                                            evtName={evtName}
-                                            evtStart={evtStart}
-                                            evtEnd={evtEnd}
-                                            evtLocal={evtLocal}
-                                            evtMember={evtMember}
-                                            evtStatus={evtStatus}
-                                            evtDes={evtDes}
+                                                evtid={evtId}
+                                                evtname={evtName}
+                                                evtstart={evtStart}
+                                                evtend={evtEnd}
+                                                evtlocal={evtLocal}
+                                                evtmember={evtMember}
+                                                evtstatus={evtStatus}
+                                                evtdes={evtDes}
                                             />
                                         </Dialog>
                                     </div>

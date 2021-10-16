@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -6,8 +6,9 @@ import axios from 'axios';
 
 export default function Comment() {
     const [listComment, setListComment] = React.useState([]);
+    // const [listUser, setListUser] = React.useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/comment/findAll")
+        const getComment = axios.get("http://localhost:8000/comment/findAll")
             .then(res => {
                 console.log(res);
                 setListComment(res.data);
@@ -17,20 +18,29 @@ export default function Comment() {
                 console.log(err);
                 console.log('error')
             })
+
+        // const getUser = axios.get(`http://localhost:8000/user/findById/${id}`)
+        //     .then(res => {
+        //         setListUser(res.data);
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
     }, [])
     return (
-        <>
-            <Grid style={{ display: "flex" }}>
-                <Grid item sm={10}>
-                    {listComment.map(comment => (
-                            <p key={comment.commentId}>{comment.userId} - {comment.content}</p>
-                    ))}
+        <div style={{ height: "700px"}}>
+            {listComment.map(comment => (
+                <Grid style={{ display: "flex" }} key={comment.commentId}>
+                    <Grid item sm={10} style={{ marginLeft: "25px" }}>
+                        <p >{comment.userId} - {comment.content}</p>
+                    </Grid>
+                    <Grid item sm={2}>
+                        <EditIcon sx={{ fontSize: 15 }} />
+                        <DeleteIcon sx={{ fontSize: 15 }} />
+                    </Grid>
                 </Grid>
-                <Grid item sm={2} style={{ textAlign: "end" }}>
-                <EditIcon sx={{ fontSize: 15 }} />
-                    <DeleteIcon sx={{ fontSize: 15 }} />
-                </Grid>
-            </Grid>
-        </>
+            ))}
+            <Button style={{textAlign:"center"}}>Comment</Button>
+        </div>
     )
 }

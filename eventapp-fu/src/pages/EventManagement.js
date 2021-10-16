@@ -10,7 +10,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button, Dialog } from '@mui/material';
 import {EditEventDialog} from '../components/EditEventDialog';
-import myapi from '../components/api/myapi';
 import { AddEventDialog } from '../components/AddEventDialog';
 
 
