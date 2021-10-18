@@ -17,6 +17,7 @@ export class AddEventDialog extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
+            
             body: JSON.stringify({
                 eventId: null,
                 eventName: event.target.eventName.value,
@@ -51,7 +52,8 @@ export class AddEventDialog extends Component {
                         <h2>Add new event</h2>
                     </Grid>
                     <form onSubmit={this.handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-                        <TextField name="eventName" label='EventName' placeholder='Enter eventName' style={{ marginBottom: "15px" }} />
+                        <p>Event Name</p>
+                        <TextField name="eventName"  placeholder="Enter event's name" style={{ marginBottom: "15px" }} />
                         <TextField
                             id="filled-multiline-static"
                             label="Description"
@@ -60,11 +62,19 @@ export class AddEventDialog extends Component {
                             rows={4}
                             variant="filled"
                         />
-                        <TextField name="startDate" label='StartDate' placeholder='Enter StartDate' style={{ marginBottom: "15px" }} />
-                        <TextField name="endDate" label='EndDate' placeholder='Enter EndDate' style={{ marginBottom: "15px" }} />
-                        <TextField name="location" label='Location' placeholder='Enter Location' style={{ marginBottom: "15px" }} />
-                        <TextField name="member" label='Member' placeholder='Enter Member' style={{ marginBottom: "15px" }} />
-                        <TextField name="status" label='Status' placeholder='Enter Status' style={{ marginBottom: "15px" }} />
+                        <br></br>
+                        <p>Start Date</p>
+                        <TextField name="startDate"  style={{ marginBottom: "15px" }} type="date" />
+                        <p>End Date</p>
+                        <TextField name="endDate"   style={{ marginBottom: "15px" }} type="date" />
+                        <p>Location</p>
+                        <TextField name="location"  placeholder='Enter location' style={{ marginBottom: "15px" }} />
+                        <p>Member</p>
+                        <TextField name="member" placeholder='Enter member' style={{ marginBottom: "15px" }} type="number" onChange={(event) => event.target.value < 0 ? (event.target.value = 0) : event.target.value} />
+                        <select id="status" name="status" label="Status" style={{ marginBottom: "15px" }}>
+                            <option value="Not Start" >Not Start</option>
+                            <option value="Active" >Active</option>
+                        </select>
                         <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Add new</Button>
                     </form>
                 </Paper>

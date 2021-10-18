@@ -54,6 +54,7 @@ export class EditEventDialog extends Component {
                         <h2>Edit event</h2>
                     </Grid>
                     <form onSubmit={this.handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
+                        
                         <TextField name="eventId" defaultValue={this.props.evtid} label='EventID' placeholder='Enter eventID' style={{ marginBottom: "15px" }} disabled />
                         <TextField name="eventName" defaultValue={this.props.evtname} label='EventName' placeholder='Enter eventName' style={{ marginBottom: "15px" }} />
                         <TextField
@@ -65,11 +66,14 @@ export class EditEventDialog extends Component {
                             rows={4}
                             variant="filled"
                         />
-                        <TextField name="startDate" defaultValue={this.props.evtstart} label='StartDate' placeholder='Enter StartDate' style={{ marginBottom: "15px" }} />
-                        <TextField name="endDate" defaultValue={this.props.evtend} label='EndDate' placeholder='Enter EndDate' style={{ marginBottom: "15px" }} />
+                        <TextField name="startDate" defaultValue={this.props.evtstart.toString().slice(0,10)} label='StartDate' placeholder='Enter StartDate' style={{ marginBottom: "15px" }} type="date"/>
+                        <TextField name="endDate" defaultValue={this.props.evtend.toString().slice(0,10)} label='EndDate' placeholder='Enter EndDate' style={{ marginBottom: "15px" }} type="date"/>
                         <TextField name="location" defaultValue={this.props.evtlocal} label='Location' placeholder='Enter Location' style={{ marginBottom: "15px" }} />
-                        <TextField name="member" defaultValue={this.props.evtmember} label='Member' placeholder='Enter Member' style={{ marginBottom: "15px" }} />
-                        <TextField name="status" defaultValue={this.props.evtstatus} label='Status' placeholder='Enter Status' style={{ marginBottom: "15px" }} />
+                        <TextField name="member" defaultValue={this.props.evtmember} label='Member' placeholder='Enter Member' style={{ marginBottom: "15px" }} type="number" onChange={(event) => event.target.value < 0 ? (event.target.value = 0) : event.target.value} />
+                        <select id="status" name="status" style={{ marginBottom: "15px" }}>
+                            <option value="Active" >Active</option>
+                            <option value="Inactive" >Close</option>
+                        </select>
                         <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Edit</Button>
                     </form>
                 </Paper>

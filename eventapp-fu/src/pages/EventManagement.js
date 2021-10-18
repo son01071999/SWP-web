@@ -60,7 +60,9 @@ export default function EventManagement() {
             .then(res => {
                 console.log(res);
                 setListEvent(res.data);
+                
                 console.log('success with listEvent')
+                
             })
             .catch(err => {
                 console.log(err);
@@ -88,8 +90,8 @@ export default function EventManagement() {
                             <StyledTableCell align="center">
                                 {myevent.eventName}
                             </StyledTableCell>
-                            <StyledTableCell align="center">{myevent.startDate}</StyledTableCell>
-                            <StyledTableCell align="center">{myevent.endDate}</StyledTableCell>
+                            <StyledTableCell align="center">{myevent.startDate.toString().slice(0,10)}</StyledTableCell>
+                            <StyledTableCell align="center">{myevent.endDate.toString().slice(0,10)}</StyledTableCell>
                             <StyledTableCell align="center">{myevent.location}</StyledTableCell>
                             <StyledTableCell align="center">{myevent.description}</StyledTableCell>
                             <StyledTableCell align="center">{myevent.member}</StyledTableCell>

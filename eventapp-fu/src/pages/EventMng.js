@@ -74,6 +74,7 @@ export class EventMng extends Component {
             <TableContainer component={Paper} >
                 <div style={{ textAlign: "center", width:"300px", margin:"15px auto" }}>
                     <Button onClick={handleClickOpenAdd}>
+                        
                         NewEvent
                     </Button>
                     <Dialog open={this.state.addEventOpen} onClose={handleClickClose}>
@@ -99,8 +100,8 @@ export class EventMng extends Component {
                                 <StyledTableCell align="center">
                                     {myevent.eventName}
                                 </StyledTableCell>
-                                <StyledTableCell align="center">{myevent.startDate}</StyledTableCell>
-                                <StyledTableCell align="center">{myevent.endDate}</StyledTableCell>
+                                <StyledTableCell align="center">{myevent.startDate.toString().slice(0,10)}</StyledTableCell>
+                                <StyledTableCell align="center">{myevent.endDate.toString().slice(0,10)}</StyledTableCell>
                                 <StyledTableCell align="center">{myevent.location}</StyledTableCell>
                                 <StyledTableCell align="center">{myevent.description}</StyledTableCell>
                                 <StyledTableCell align="center">{myevent.member}</StyledTableCell>
